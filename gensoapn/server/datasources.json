@@ -1,0 +1,16 @@
+{
+  "numberSoap": {
+    "url": "http://www.dataaccess.com/webservicesserver/numberconversion.wso",
+    "name": "numberSoap",
+    "wsdl": "http://www.dataaccess.com/webservicesserver/numberconversion.wso?WSDL",
+    "remotingEnabled": true,
+    "connector": "soap",
+    "operations": {
+      "readGesuch": {
+        "service": "NumberConversion",
+        "port": "NumberConversionSoap",
+        "operation": "NumberToWords"
+      }
+    }
+  }
+}
