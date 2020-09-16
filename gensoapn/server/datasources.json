@@ -12,5 +12,16 @@
         "operation": "NumberToWords"
       }
     }
+  },
+  "mongoDBnumSaver": {
+    "host": "cluster0.ycjm7.gcp.mongodb.net",
+    "port": "",
+    "url": "mongodb+srv://kamil:kamil@cluster0.ycjm7.gcp.mongodb.net/mongoDBnumSaver?retryWrites=true&w=majority",
+    "database": "numberMDB",
+    "password": "kamil",
+    "name": "numberMDB",
+    "user": "kamil",
+    "useNewUrlParser": false,
+    "connector": "mongodb"
   }
 }

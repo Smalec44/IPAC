@@ -16,5 +16,9 @@
   "numberConvModel": {
     "dataSource": "numberSoap",
     "public": true
+  },
+  "numStore": {
+    "dataSource": "mongoDBnumSaver",
+    "public": true
   }
 }

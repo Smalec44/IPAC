@@ -1,5 +1,420 @@
-paths: {}
-definitions: {}
+paths:
+  /numberConvModels/read:
+    get:
+      tags:
+        - numberConvModel
+      operationId: numberConvModel.numberToWords
+      parameters:
+        - name: num
+          in: query
+          required: true
+          type: number
+          format: double
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+      deprecated: false
+  /numStores:
+    post:
+      tags:
+        - numStore
+      summary: Create a new instance of the model and persist it into the data source.
+      operationId: numStore.create
+      parameters:
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            description: Model instance data
+            $ref: '#/definitions/numStore'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/numStore'
+      deprecated: false
+    patch:
+      tags:
+        - numStore
+      summary: >-
+        Patch an existing model instance or insert a new one into the data
+        source.
+      operationId: numStore.patchOrCreate
+      parameters:
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            description: Model instance data
+            $ref: '#/definitions/numStore'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/numStore'
+      deprecated: false
+    put:
+      tags:
+        - numStore
+      summary: >-
+        Replace an existing model instance or insert a new one into the data
+        source.
+      operationId: numStore.replaceOrCreate__put_numStores
+      parameters:
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            description: Model instance data
+            $ref: '#/definitions/numStore'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/numStore'
+      deprecated: false
+    get:
+      tags:
+        - numStore
+      summary: Find all instances of the model matched by filter from the data source.
+      operationId: numStore.find
+      parameters:
+        - name: filter
+          in: query
+          description: >-
+            Filter defining fields, where, include, order, offset, and limit -
+            must be a JSON-encoded string (`{"where":{"something":"value"}}`). 
+            See
+            https://loopback.io/doc/en/lb3/Querying-data.html#using-stringified-json-in-rest-queries
+            for more details.
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/numStore'
+      deprecated: false
+  /numStores/replaceOrCreate:
+    post:
+      tags:
+        - numStore
+      summary: >-
+        Replace an existing model instance or insert a new one into the data
+        source.
+      operationId: numStore.replaceOrCreate__post_numStores_replaceOrCreate
+      parameters:
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            description: Model instance data
+            $ref: '#/definitions/numStore'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/numStore'
+      deprecated: false
+  /numStores/upsertWithWhere:
+    post:
+      tags:
+        - numStore
+      summary: >-
+        Update an existing model instance or insert a new one into the data
+        source based on the where criteria.
+      operationId: numStore.upsertWithWhere
+      parameters:
+        - name: where
+          in: query
+          description: Criteria to match model instances
+          required: false
+          type: string
+          format: JSON
+        - name: data
+          in: body
+          description: An object of model property name/value pairs
+          required: false
+          schema:
+            description: An object of model property name/value pairs
+            $ref: '#/definitions/numStore'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/numStore'
+      deprecated: false
+  '/numStores/{id}/exists':
+    get:
+      tags:
+        - numStore
+      summary: Check whether a model instance exists in the data source.
+      operationId: 'numStore.exists__get_numStores_{id}_exists'
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+            properties:
+              exists:
+                type: boolean
+      deprecated: false
+  '/numStores/{id}':
+    head:
+      tags:
+        - numStore
+      summary: Check whether a model instance exists in the data source.
+      operationId: 'numStore.exists__head_numStores_{id}'
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+            properties:
+              exists:
+                type: boolean
+      deprecated: false
+    get:
+      tags:
+        - numStore
+      summary: 'Find a model instance by {{id}} from the data source.'
+      operationId: numStore.findById
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+        - name: filter
+          in: query
+          description: >-
+            Filter defining fields and include - must be a JSON-encoded string
+            ({"something":"value"})
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/numStore'
+      deprecated: false
+    put:
+      tags:
+        - numStore
+      summary: >-
+        Replace attributes for a model instance and persist it into the data
+        source.
+      operationId: 'numStore.replaceById__put_numStores_{id}'
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            description: Model instance data
+            $ref: '#/definitions/numStore'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/numStore'
+      deprecated: false
+    delete:
+      tags:
+        - numStore
+      summary: 'Delete a model instance by {{id}} from the data source.'
+      operationId: numStore.deleteById
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+      deprecated: false
+    patch:
+      tags:
+        - numStore
+      summary: >-
+        Patch attributes for a model instance and persist it into the data
+        source.
+      operationId: numStore.prototype.patchAttributes
+      parameters:
+        - name: id
+          in: path
+          description: numStore id
+          required: true
+          type: string
+          format: JSON
+        - name: data
+          in: body
+          description: An object of model property name/value pairs
+          required: false
+          schema:
+            description: An object of model property name/value pairs
+            $ref: '#/definitions/numStore'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/numStore'
+      deprecated: false
+  '/numStores/{id}/replace':
+    post:
+      tags:
+        - numStore
+      summary: >-
+        Replace attributes for a model instance and persist it into the data
+        source.
+      operationId: 'numStore.replaceById__post_numStores_{id}_replace'
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            description: Model instance data
+            $ref: '#/definitions/numStore'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/numStore'
+      deprecated: false
+  /numStores/findOne:
+    get:
+      tags:
+        - numStore
+      summary: Find first instance of the model matched by filter from the data source.
+      operationId: numStore.findOne
+      parameters:
+        - name: filter
+          in: query
+          description: >-
+            Filter defining fields, where, include, order, offset, and limit -
+            must be a JSON-encoded string (`{"where":{"something":"value"}}`). 
+            See
+            https://loopback.io/doc/en/lb3/Querying-data.html#using-stringified-json-in-rest-queries
+            for more details.
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/numStore'
+      deprecated: false
+  /numStores/update:
+    post:
+      tags:
+        - numStore
+      summary: 'Update instances of the model matched by {{where}} from the data source.'
+      operationId: numStore.updateAll
+      parameters:
+        - name: where
+          in: query
+          description: Criteria to match model instances
+          required: false
+          type: string
+          format: JSON
+        - name: data
+          in: body
+          description: An object of model property name/value pairs
+          required: false
+          schema:
+            description: An object of model property name/value pairs
+            $ref: '#/definitions/numStore'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            description: Information related to the outcome of the operation
+            type: object
+            properties:
+              count:
+                description: The number of instances updated
+                type: number
+                format: double
+      deprecated: false
+  /numStores/count:
+    get:
+      tags:
+        - numStore
+      summary: Count instances of the model matched by where from the data source.
+      operationId: numStore.count
+      parameters:
+        - name: where
+          in: query
+          description: Criteria to match model instances
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+            properties:
+              count:
+                type: number
+                format: double
+      deprecated: false
+definitions:
+  numStore:
+    properties:
+      num:
+        type: string
+      id:
+        $ref: '#/definitions/ObjectID'
+    additionalProperties: false
+  x-any:
+    properties: {}
+  ObjectID:
+    type: string
+    pattern: '^[a-fA-F\d]{24}$'
 basePath: /api
 swagger: '2.0'
 info:
